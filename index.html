@@ -126,22 +126,29 @@ margin-bottom:30px;
 /* CAKE */
 
 .cake-container{
-position:relative;
-width:220px;
-height:180px;
-margin-top:30px;
+margin-top:40px;
 display:flex;
 justify-content:center;
-align-items:flex-end;
 }
 
-.cake{
+.cake-img{
 width:200px;
-height:110px;
-background:linear-gradient(#ffd1dc,#ffafbd);
-border-radius:25px 25px 10px 10px;
-position:relative;
+
 animation:cakeBounce 2s infinite;
+
+filter:drop-shadow(0 0 20px rgba(255,150,200,0.7));
+}
+
+@keyframes cakeBounce{
+
+0%,100%{
+transform:translateY(0)
+}
+
+50%{
+transform:translateY(-10px)
+}
+
 }
 
 .cake::before{
@@ -316,15 +323,10 @@ animation:sparkleFade 2s linear forwards;
 <h1 class="main-title">Aditi</h1>
 
 <div class="cake-container">
-
-<div class="cake">
-
-<div class="candle c1"><div class="flame"></div></div>
-<div class="candle c2"><div class="flame"></div></div>
-<div class="candle c3"><div class="flame"></div></div>
-
-</div>
-
+<img 
+src="https://media.tenor.com/3uNq3m1XQ1kAAAAi/birthday-cake.gif" 
+class="cake-img"
+alt="Birthday Cake">
 </div>
 
 <div id="countdown">Preparing Surprise...</div>
