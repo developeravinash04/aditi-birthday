@@ -1,361 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<title>Happy Birthday Aditi 🎉</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Grand Celebration | Aditi 🎉</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,700;1,900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --rose: #ffafbd;
+            --deep-rose: #ff4081;
+            --glass: rgba(255, 255, 255, 0.15);
+        }
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
 
-<style>
+        body {
+            background: radial-gradient(circle at center, #2c001e 0%, #000000 100%);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            min-height: 200vh; /* Long scroll for the reveal */
+        }
 
-body{
-font-family:'Poppins',sans-serif;
-text-align:center;
-margin:0;
-color:white;
-overflow-x:hidden;
-overflow-y:auto;
-min-height:100vh;
+        /* Custom Magic Wand Cursor */
+        #cursor-dot {
+            width: 8px; height: 8px; background: #fff; border-radius: 50%;
+            position: fixed; pointer-events: none; z-index: 9999;
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5);
+        }
 
-background: linear-gradient(
-135deg,
-#ff9a9e 0%,
-#fecfef 40%,
-#fad0c4 70%,
-#ffd1ff 100%
-);
-}
+        /* Glittering Stars Background */
+        .stars-container {
+            position: fixed; width: 100%; height: 100%; z-index: -1;
+        }
+        .star {
+            position: absolute; background: white; border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px #fff; }
+        }
 
-/* TITLE */
+        /* Floating Elements */
+        .float-wrap { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .item { position: absolute; font-size: 2rem; animation: floatUp var(--d) linear infinite; opacity: 0.7; }
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) rotate(0deg); }
+            100% { transform: translateY(-20vh) rotate(360deg); }
+        }
 
-h1{
-font-size:64px;
-margin-top:70px;
+        /* Header Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            perspective: 1000px;
+        }
 
-background: linear-gradient(90deg,#fff,#ffe6f2,#fff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+        .main-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 8rem;
+            background: linear-gradient(to right, #fdf5e6, #d4af37, #fdf5e6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+            margin-bottom: 0;
+            animation: titleGlow 3s infinite alternate;
+        }
 
-text-shadow:0 6px 20px rgba(255,255,255,0.4);
-}
+        @keyframes titleGlow {
+            from { filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4)); }
+            to { filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8)); }
+        }
 
-/* BUTTON */
+        .bday-text {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            color: var(--rose);
+            margin-bottom: 40px;
+        }
 
-button{
-padding:18px 40px;
-font-size:20px;
-border:none;
-border-radius:50px;
-background:white;
-color:#ff4081;
-cursor:pointer;
+        /* Animated Birthday Cake (Pure CSS) */
+        .cake-container { position: relative; width: 200px; height: 200px; margin-top: 20px; }
+        .cake { position: absolute; bottom: 0; width: 200px; height: 100px; background: #fecfef; border-radius: 50px 50px 0 0; box-shadow: 0 10px 0 #f8bbd0; }
+        .cake::after { content: 'ADITI'; position: absolute; width: 100%; text-align: center; top: 30px; font-weight: 900; color: #ff4081; letter-spacing: 2px; font-size: 1rem; }
+        .candle { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); width: 12px; height: 50px; background: linear-gradient(to bottom, #fff 50%, #d4af37 50%); border-radius: 5px; }
+        .flame { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 15px; height: 25px; background: #ff9800; border-radius: 50% 50% 20% 20%; animation: flicker 0.1s infinite; box-shadow: 0 0 20px #ff9800; }
+        @keyframes flicker { 0%, 100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.1) rotate(2deg); } }
 
-box-shadow:
-0 6px 20px rgba(0,0,0,0.2),
-0 0 15px rgba(255,64,129,0.5);
+        /* Countdown Glass Box */
+        #countdown {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 20px 40px;
+            border-radius: 100px;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-weight: 300;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-transition:all .3s;
-}
+        /* SURPRISE BUTTON - ULTRA PREMIUM */
+        .reveal-btn {
+            margin-top: 50px;
+            padding: 25px 60px;
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(45deg, #d4af37, #fdf5e6, #d4af37);
+            background-size: 200% auto;
+            border: none;
+            border-radius: 50px;
+            color: #2c001e;
+            font-weight: 900;
+            transition: 0.5s;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+            animation: shine 3s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+        .reveal-btn:hover { transform: scale(1.1) rotate(-2deg); box-shadow: 0 0 50px rgba(212, 175, 55, 1); }
 
-button:hover{
-transform:scale(1.07);
-box-shadow:
-0 10px 30px rgba(0,0,0,0.25),
-0 0 25px rgba(255,64,129,0.8);
-}
+        /* The Letter Card */
+        .card-container {
+            display: none;
+            max-width: 900px;
+            margin: 100px auto;
+            padding: 80px;
+            background: #fff;
+            color: #333;
+            border-radius: 5px;
+            position: relative;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.8);
+            transform-style: preserve-3d;
+            animation: slideUp 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(100px); } to { opacity: 1; transform: translateY(0); } }
 
-/* COUNTDOWN */
+        .card-container::before {
+            content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border: 2px solid #d4af37; pointer-events: none;
+        }
 
-#countdown{
-font-size:28px;
-margin-top:20px;
-}
+        .letter-content {
+            font-size: 1.2rem; line-height: 2; text-align: center;
+        }
 
-/* CENTER AREA */
+        .letter-content p { margin-bottom: 25px; }
 
-#centerArea{
-margin-top:30px;
-}
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--deep-rose);
+            margin-top: 50px;
+        }
 
-/* CAKE */
+        /* Emojis & Teddies Section */
+        .emoji-grid {
+            display: flex; justify-content: center; gap: 20px; font-size: 3rem; margin: 40px 0;
+        }
 
-#cake{
-font-size:90px;
-margin-top:20px;
-animation:bounce 2s infinite;
-}
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
 
-@keyframes bounce{
-0%{transform:translateY(0)}
-50%{transform:translateY(-15px)}
-100%{transform:translateY(0)}
-}
-
-/* BALLOONS */
-
-.balloon{
-font-size:50px;
-animation:float 4s infinite ease-in-out;
-}
-
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-30px)}
-100%{transform:translateY(0)}
-}
-
-/* MESSAGE CARD */
-
-#message{
-display:none;
-margin-top:40px;
-margin-bottom:150px;
-max-width:750px;
-margin-left:auto;
-margin-right:auto;
-
-padding:30px;
-
-border-radius:25px;
-
-background:rgba(255,255,255,0.25);
-backdrop-filter: blur(12px);
-
-box-shadow:
-0 15px 40px rgba(0,0,0,0.15),
-0 0 30px rgba(255,255,255,0.2);
-
-font-size:20px;
-line-height:1.7;
-}
-
-/* COLORFUL TEXT */
-
-.colorText{
-background:linear-gradient(90deg,#ff4e50,#f9d423,#24c6dc,#ff4e50);
--webkit-background-clip:text;
-color:transparent;
-font-weight:600;
-}
-
-/* FOOTER */
-
-footer{
-margin-top:40px;
-font-size:20px;
-}
-
-/* FLOATING BACKGROUND ICONS */
-
-.floating-container{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-overflow:hidden;
-z-index:-1;
-}
-
-.floating{
-position:absolute;
-animation:floatUp linear infinite;
-opacity:0.8;
-}
-
-@keyframes floatUp{
-0%{transform:translateY(100vh);opacity:0;}
-20%{opacity:1;}
-100%{transform:translateY(-10vh);opacity:0;}
-}
-
-/* MOBILE */
-
-@media(max-width:600px){
-
-h1{
-font-size:40px;
-}
-
-#message{
-font-size:18px;
-padding:20px;
-}
-
-button{
-font-size:18px;
-padding:15px 30px;
-}
-
-}
-
-</style>
-
+        @media (max-width: 768px) {
+            .main-title { font-size: 4rem; }
+            .card-container { padding: 30px; margin: 20px; }
+            .reveal-btn { padding: 15px 30px; font-size: 1.1rem; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="floating-container"></div>
+    <div id="cursor-dot"></div>
 
-<h1>🎉 Happy Birthday Aditi 🎉</h1>
+    <div class="stars-container" id="stars"></div>
+    <div class="float-wrap" id="floatWrap"></div>
 
-<div id="countdown"></div>
+    <section class="hero">
+        <div class="bday-text">Our Dearest</div>
+        <h1 class="main-title">Aditi</h1>
+        
+        <div class="cake-container">
+            <div class="candle"><div class="flame"></div></div>
+            <div class="cake"></div>
+        </div>
 
-<div id="centerArea">
+        <div id="countdown">Calculating...</div>
 
-<button id="surpriseBtn" onclick="openSurprise()">
-Click to open your surprise 🎁
-</button>
+        <button class="reveal-btn" onclick="unfoldSurprise()">OPEN YOUR GIFT 🎁</button>
+    </section>
 
-<div class="balloon">🎈 🎈 🎈 🧸</div>
+    <div class="card-container" id="letterCard">
+        <div class="emoji-grid">🧸 🎈 💖 🎈 🧸</div>
+        <div class="letter-content">
+            <p style="font-family: 'Playfair Display'; font-size: 2.5rem; color: #d4af37;">Happy Birthday Aditi!</p>
+            <p>Today isn't just a date on the calendar; it's a celebration of the <b>wonderful soul</b> you are. Your presence brings a warmth that no candle can match, and your smile is the spark that lights up our days.</p>
+            <p>May your year ahead be a masterpiece of <b>joy, health, and limitless success</b>. May you travel to the places you dream of, achieve the goals you've set, and always find reasons to laugh until your heart is full.</p>
+            <p>Keep being the <b>shining star</b> that you are. The world is a much prettier place with you in it.</p>
+            
+            <div class="signature">With endless love,</div>
+            <div style="font-weight: 600; font-size: 1.4rem;">Avinash & Sanskriti</div>
+        </div>
+        <div class="emoji-grid" style="font-size: 1.5rem; margin-top: 50px;">✨ 🧁 ✨ 🥂 ✨ 🍰 ✨</div>
+    </div>
 
-<div id="cake">🎂</div>
+    <footer>
+        DESIGNED FOR A QUEEN • 2026 • ADITI'S DAY
+    </footer>
 
-</div>
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9c1d0a5e6f.mp3?filename=happy-birthday-to-you-piano-version-13976.mp3">
+    </audio>
 
-<div id="message">
+    <script>
+        // 1. Create Twinkling Stars
+        const starCount = 150;
+        const starsContainer = document.getElementById('stars');
+        for(let i=0; i<starCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+            starsContainer.appendChild(star);
+        }
 
-<p class="colorText">Dear Aditi,</p>
+        // 2. Custom Cursor Follow
+        const dot = document.getElementById('cursor-dot');
+        window.addEventListener('mousemove', (e) => {
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+        });
 
-<p>Wishing you a very Happy Birthday! 🎉</p>
+        // 3. Floating Emojis (Teddies, Hearts, etc)
+        const floatItems = ["🧸", "🎈", "❤️", "💖", "🎂", "🌸", "⭐", "🦄"];
+        const wrap = document.getElementById('floatWrap');
+        function spawnItem() {
+            const el = document.createElement('div');
+            el.className = 'item';
+            el.innerHTML = floatItems[Math.floor(Math.random() * floatItems.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.setProperty('--d', Math.random() * 5 + 10 + 's');
+            wrap.appendChild(el);
+            setTimeout(() => el.remove(), 15000);
+        }
+        setInterval(spawnItem, 800);
 
-<p>
-May your life always be filled with happiness, laughter,
-and beautiful moments that make every day special.
-</p>
+        // 4. Countdown Logic
+        const bday = new Date("March 24, 2026 00:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const d = bday - now;
+            const days = Math.floor(d / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((d % (1000 * 60)) / 1000);
+            
+            document.getElementById("countdown").innerHTML = 
+                d > 0 ? `PREPARING SURPRISE: ${days}d ${hours}h ${mins}m ${secs}s` : "THE QUEEN'S DAY HAS ARRIVED!";
+        }, 1000);
 
-<p>
-May this year bring you amazing opportunities,
-great achievements, and endless success in everything you do.
-</p>
+        // 5. Reveal Surprise
+        function unfoldSurprise() {
+            document.getElementById('letterCard').style.display = 'block';
+            document.getElementById('bgMusic').play();
+            
+            // Grand Confetti Blast
+            const end = Date.now() + (5 * 1000);
+            const colors = ['#d4af37', '#ff4081', '#ffffff'];
 
-<p>
-Keep shining, keep smiling and keep spreading positivity everywhere.
-The world becomes brighter because of wonderful people like you.
-</p>
+            (function frame() {
+                confetti({
+                    particleCount: 3,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: colors
+                });
+                confetti({
+                    particleCount: 3,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: colors
+                });
 
-<p>
-May your future be filled with love, success, good health,
-and countless joyful memories.
-</p>
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
 
-<p class="colorText">
-Once again, Happy Birthday and have a fantastic year ahead! 🎂✨
-</p>
-
-</div>
-
-<footer>
-Love from,<br>
-<b>Avinash & Sanskriti ❤️</b>
-</footer>
-
-<audio id="music" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9c1d0a5e6f.mp3?filename=happy-birthday-to-you-piano-version-13976.mp3">
-</audio>
-
-<script>
-
-/* SPARKLES */
-
-function createSparkle(){
-
-const sparkle=document.createElement("div")
-
-sparkle.innerHTML="✨"
-
-sparkle.style.position="fixed"
-sparkle.style.left=Math.random()*100+"vw"
-sparkle.style.top=Math.random()*100+"vh"
-sparkle.style.fontSize=(10+Math.random()*20)+"px"
-sparkle.style.opacity=Math.random()
-sparkle.style.pointerEvents="none"
-
-document.body.appendChild(sparkle)
-
-setTimeout(()=>{
-sparkle.remove()
-},2000)
-
-}
-
-setInterval(createSparkle,300)
-
-/* SURPRISE CLICK */
-
-function openSurprise(){
-
-document.getElementById("message").style.display="block"
-
-document.getElementById("music").play()
-
-document.getElementById("surpriseBtn").style.marginTop="30px"
-
-/* CONFETTI BLAST */
-
-confetti({
-particleCount:300,
-spread:180,
-origin:{y:0.6}
-})
-
-}
-
-/* COUNTDOWN */
-
-var birthday = new Date("March 24, 2026 00:00:00").getTime()
-
-var x = setInterval(function(){
-
-var now = new Date().getTime()
-
-var distance = birthday - now
-
-var days = Math.floor(distance / (1000*60*60*24))
-var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60))
-var minutes = Math.floor((distance%(1000*60*60))/(1000*60))
-var seconds = Math.floor((distance%(1000*60))/1000)
-
-document.getElementById("countdown").innerHTML =
-"⏳ Surprise unlocks in: "+days+"d "+hours+"h "+minutes+"m "+seconds+"s"
-
-if(distance < 0){
-clearInterval(x)
-document.getElementById("countdown").innerHTML="🎉 It's Aditi's Birthday Today! 🎉"
-}
-
-},1000)
-
-/* FLOATING ICONS */
-
-const icons = ["❤️","💖","💝","🧸","💕","💗"]
-
-function createFloating(){
-
-const element=document.createElement("div")
-element.className="floating"
-
-element.innerHTML=icons[Math.floor(Math.random()*icons.length)]
-
-element.style.left=Math.random()*100+"vw"
-element.style.animationDuration=6+Math.random()*6+"s"
-element.style.fontSize=20+Math.random()*30+"px"
-
-document.querySelector(".floating-container").appendChild(element)
-
-setTimeout(()=>{
-element.remove()
-},12000)
-
-}
-
-setInterval(createFloating,500)
-
-</script>
-
+            // Scroll down to the card
+            setTimeout(() => {
+                document.getElementById('letterCard').scrollIntoView({ behavior: 'smooth' });
+            }, 500);
+        }
+    </script>
 </body>
 </html>
