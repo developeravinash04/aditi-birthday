@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Aditi 🎉</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+
+body{
+font-family:Poppins;
+text-align:center;
+background:linear-gradient(120deg,#ff9a9e,#fad0c4);
+height:100vh;
+margin:0;
+color:white;
+overflow:hidden;
+}
+
+h1{
+font-size:60px;
+margin-top:100px;
+}
+
+button{
+padding:18px 40px;
+font-size:20px;
+border:none;
+border-radius:40px;
+background:white;
+color:#ff4081;
+cursor:pointer;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+#message{
+display:none;
+margin-top:40px;
+font-size:22px;
+padding:20px;
+max-width:700px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.balloon{
+font-size:50px;
+animation:float 4s infinite ease-in-out;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-30px)}
+100%{transform:translateY(0)}
+}
+
+#cake{
+font-size:80px;
+margin-top:20px;
+}
+
+#countdown{
+font-size:28px;
+margin-top:20px;
+}
+
+footer{
+position:absolute;
+bottom:20px;
+width:100%;
+font-size:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🎉 Happy Birthday Aditi 🎉</h1>
+
+<div id="countdown"></div>
+
+<button onclick="openSurprise()">Click to open your surprise 🎁</button>
+
+<div id="message">
+
+<div class="balloon">🎈 🎈 🎈</div>
+
+<div id="cake">🎂</div>
+
+<p>
+Wishing you a very Happy Birthday Aditi! 🎉
+</p>
+
+<p>
+May your life be filled with happiness, success, and beautiful moments.
+May all your dreams come true and your future shine brighter than ever ✨
+</p>
+
+<p>
+Keep smiling, keep shining, and keep spreading joy everywhere you go.
+</p>
+
+<p>
+With lots of love and best wishes for your amazing future ❤️
+</p>
+
+</div>
+
+<footer>
+Love from,<br>
+<b>Avinash & Sanskriti ❤️</b>
+</footer>
+
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9c1d0a5e6f.mp3?filename=happy-birthday-to-you-piano-version-13976.mp3">
+</audio>
+
+<script>
+
+function openSurprise(){
+
+document.getElementById("message").style.display="block"
+
+document.getElementById("music").play()
+
+for(let i=0;i<8;i++){
+confetti({
+particleCount:120,
+spread:100,
+origin:{y:0.6}
+})
+}
+
+}
+
+var birthday = new Date("March 24, 2026 00:00:00").getTime();
+
+var x = setInterval(function(){
+
+var now = new Date().getTime();
+
+var distance = birthday - now;
+
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+document.getElementById("countdown").innerHTML =
+"⏳ Surprise unlocks in: " + days + "d " + hours + "h "
++ minutes + "m " + seconds + "s";
+
+if(distance < 0){
+clearInterval(x);
+document.getElementById("countdown").innerHTML="🎉 It's Aditi's Birthday Today! 🎉";
+}
+
+},1000);
+
+</script>
+
+</body>
+</html>
