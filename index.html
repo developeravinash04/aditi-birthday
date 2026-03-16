@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <title>Happy Birthday Aditi 🎉</title>
 
@@ -22,7 +24,7 @@ overflow:hidden;
 
 h1{
 font-size:60px;
-margin-top:100px;
+margin-top:80px;
 }
 
 button{
@@ -58,7 +60,7 @@ animation:float 4s infinite ease-in-out;
 }
 
 #cake{
-font-size:80px;
+font-size:90px;
 margin-top:20px;
 }
 
@@ -74,10 +76,48 @@ width:100%;
 font-size:18px;
 }
 
+.floating-container{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+z-index:-1;
+}
+
+.floating{
+position:absolute;
+animation:floatUp linear infinite;
+opacity:0.8;
+}
+
+@keyframes floatUp{
+
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
+
+<div class="floating-container"></div>
 
 <h1>🎉 Happy Birthday Aditi 🎉</h1>
 
@@ -91,28 +131,46 @@ font-size:18px;
 
 <div id="cake">🎂</div>
 
+<p>Dear Aditi,</p>
+
 <p>
-Wishing you a very Happy Birthday Aditi! 🎉
+Wishing you a very Happy Birthday! 🎉
 </p>
 
 <p>
-May your life be filled with happiness, success, and beautiful moments.
-May all your dreams come true and your future shine brighter than ever ✨
+May your life be filled with happiness, success and beautiful moments.
+May every dream you have come true and may your future shine brighter than ever.
 </p>
 
 <p>
-Keep smiling, keep shining, and keep spreading joy everywhere you go.
+May this year bring you amazing opportunities, wonderful achievements
+and endless reasons to smile.
 </p>
 
 <p>
-With lots of love and best wishes for your amazing future ❤️
+Keep being the kind, wonderful and positive person that everyone loves.
+Your presence brings happiness to people around you.
+</p>
+
+<p>
+May your journey ahead be filled with love, laughter, success and unforgettable memories.
+</p>
+
+<p>
+Once again, Happy Birthday! 🎂🎉
+</p>
+
+<p>
+With lots of love and best wishes ❤️
 </p>
 
 </div>
 
 <footer>
+
 Love from,<br>
 <b>Avinash & Sanskriti ❤️</b>
+
 </footer>
 
 <audio id="music" loop>
@@ -128,11 +186,13 @@ document.getElementById("message").style.display="block"
 document.getElementById("music").play()
 
 for(let i=0;i<8;i++){
+
 confetti({
 particleCount:120,
 spread:100,
 origin:{y:0.6}
 })
+
 }
 
 }
@@ -151,8 +211,7 @@ var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 document.getElementById("countdown").innerHTML =
-"⏳ Surprise unlocks in: " + days + "d " + hours + "h "
-+ minutes + "m " + seconds + "s";
+"⏳ Surprise unlocks in: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
 
 if(distance < 0){
 clearInterval(x);
@@ -160,6 +219,31 @@ document.getElementById("countdown").innerHTML="🎉 It's Aditi's Birthday Today
 }
 
 },1000);
+
+const icons = ["❤️","💖","💝","🧸","💕","💗"]
+
+function createFloating(){
+
+const element = document.createElement("div")
+element.className = "floating"
+
+element.innerHTML = icons[Math.floor(Math.random()*icons.length)]
+
+element.style.left = Math.random()*100 + "vw"
+element.style.animationDuration = 6 + Math.random()*6 + "s"
+element.style.fontSize = 20 + Math.random()*30 + "px"
+
+document.querySelector(".floating-container").appendChild(element)
+
+setTimeout(()=>{
+
+element.remove()
+
+},12000)
+
+}
+
+setInterval(createFloating,500)
 
 </script>
 
