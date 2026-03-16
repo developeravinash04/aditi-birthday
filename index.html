@@ -1,163 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<title>Happy Birthday Aditi 🎉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<title>Birthday Celebration | Aditi 🎉</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
 
-body{
-font-family:'Poppins',sans-serif;
-text-align:center;
+:root{
+--gold:#d4af37;
+--rose:#ffafbd;
+--deep:#ff4081;
+--glass:rgba(255,255,255,0.15);
+}
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+cursor:none;
+}
+
+body{
+
+background:radial-gradient(circle,#2c001e 0%,#000 100%);
+font-family:'Poppins',sans-serif;
 color:white;
 overflow-x:hidden;
-overflow-y:auto;
-min-height:100vh;
+min-height:200vh;
 
-background: linear-gradient(
-135deg,
-#ff9a9e 0%,
-#fecfef 40%,
-#fad0c4 70%,
-#ffd1ff 100%
-);
 }
 
-/* TITLE */
+/* custom cursor */
 
-h1{
-font-size:64px;
-margin-top:70px;
-background:linear-gradient(90deg,#fff,#ffe6f2,#fff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-text-shadow:0 6px 20px rgba(255,255,255,0.4);
+#cursor-dot{
+
+width:8px;
+height:8px;
+background:white;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+z-index:9999;
+box-shadow:0 0 15px white;
+
 }
 
-/* COUNTDOWN */
+/* stars */
 
-#countdown{
-font-size:28px;
-margin-top:20px;
+.stars-container{
+
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+
 }
 
-/* GIFT BOX */
+.star{
 
-#giftBox{
-font-size:70px;
-cursor:pointer;
-margin-top:30px;
-animation:bounce 2s infinite;
+position:absolute;
+background:white;
+border-radius:50%;
+animation:twinkle var(--duration) infinite ease-in-out;
+
 }
 
-@keyframes bounce{
-0%{transform:translateY(0)}
-50%{transform:translateY(-15px)}
-100%{transform:translateY(0)}
+@keyframes twinkle{
+
+0%,100%{opacity:0.3}
+50%{opacity:1;box-shadow:0 0 10px white}
+
 }
 
-/* CENTER AREA */
+/* floating emojis */
 
-#centerArea{
-margin-top:20px;
-}
+.float-wrap{
 
-/* BALLOONS */
-
-.balloon{
-font-size:50px;
-animation:float 4s infinite ease-in-out;
-}
-
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-30px)}
-100%{transform:translateY(0)}
-}
-
-/* CAKE */
-
-#cake{
-font-size:90px;
-margin-top:20px;
-animation:bounce 2s infinite;
-}
-
-/* MESSAGE CARD */
-
-#message{
-display:none;
-margin-top:40px;
-margin-bottom:150px;
-max-width:750px;
-margin-left:auto;
-margin-right:auto;
-
-padding:30px;
-
-border-radius:25px;
-
-background:rgba(255,255,255,0.25);
-backdrop-filter:blur(12px);
-
-box-shadow:
-0 15px 40px rgba(0,0,0,0.15),
-0 0 30px rgba(255,255,255,0.2);
-
-font-size:20px;
-line-height:1.7;
-}
-
-/* FOOTER */
-
-footer{
-margin-top:40px;
-font-size:20px;
-}
-
-/* FLOATING ICONS */
-
-.floating-container{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
 pointer-events:none;
-overflow:hidden;
-z-index:-1;
+
 }
 
-.floating{
+.item{
+
 position:absolute;
-animation:floatUp linear infinite;
-opacity:0.8;
+font-size:2rem;
+animation:floatUp var(--d) linear infinite;
+
 }
 
 @keyframes floatUp{
-0%{transform:translateY(100vh);opacity:0;}
-20%{opacity:1;}
-100%{transform:translateY(-10vh);opacity:0;}
+
+0%{transform:translateY(110vh)}
+100%{transform:translateY(-20vh)}
+
 }
 
-/* MOBILE */
+/* hero section */
 
-@media(max-width:600px){
+.hero{
 
-h1{
-font-size:40px;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+
 }
 
-#message{
-font-size:18px;
-padding:20px;
+/* title */
+
+.main-title{
+
+font-family:'Great Vibes',cursive;
+font-size:8rem;
+
+background:linear-gradient(to right,#fdf5e6,#d4af37,#fdf5e6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+filter:drop-shadow(0 0 20px rgba(212,175,55,.5));
+
 }
+
+.bday-text{
+
+letter-spacing:10px;
+text-transform:uppercase;
+color:var(--rose);
+margin-bottom:30px;
+
+}
+
+/* cake */
+
+.cake-container{
+
+position:relative;
+width:200px;
+height:200px;
+margin-top:20px;
+
+}
+
+.cake{
+
+position:absolute;
+bottom:0;
+width:200px;
+height:100px;
+background:#fecfef;
+border-radius:50px 50px 0 0;
+
+}
+
+.cake::after{
+
+content:"ADITI";
+position:absolute;
+width:100%;
+top:30px;
+text-align:center;
+color:#ff4081;
+font-weight:bold;
+
+}
+
+.candle{
+
+position:absolute;
+top:-40px;
+left:50%;
+transform:translateX(-50%);
+width:12px;
+height:50px;
+background:white;
+
+}
+
+.flame{
+
+position:absolute;
+top:-15px;
+left:50%;
+transform:translateX(-50%);
+width:15px;
+height:25px;
+background:orange;
+border-radius:50%;
+animation:flicker .1s infinite;
+
+}
+
+@keyframes flicker{
+
+0%,100%{transform:translateX(-50%) scale(1)}
+50%{transform:translateX(-50%) scale(1.1)}
+
+}
+
+/* countdown */
+
+#countdown{
+
+background:var(--glass);
+backdrop-filter:blur(10px);
+padding:20px 40px;
+border-radius:100px;
+margin-top:30px;
+
+}
+
+/* gift button */
+
+.reveal-btn{
+
+margin-top:40px;
+padding:20px 60px;
+font-size:1.5rem;
+font-family:'Playfair Display';
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg,#d4af37,#fdf5e6,#d4af37);
+background-size:200%;
+color:#2c001e;
+font-weight:bold;
+animation:shine 3s linear infinite;
+
+}
+
+@keyframes shine{
+to{background-position:200% center}
+}
+
+/* letter card */
+
+.card-container{
+
+display:none;
+max-width:900px;
+margin:100px auto;
+padding:70px;
+background:white;
+color:#333;
+border-radius:5px;
+box-shadow:0 30px 100px rgba(0,0,0,.8);
+
+animation:slideUp 1s ease;
+
+}
+
+@keyframes slideUp{
+
+from{opacity:0;transform:translateY(100px)}
+to{opacity:1}
+
+}
+
+.letter-content{
+
+font-size:1.2rem;
+line-height:2;
+text-align:center;
+
+}
+
+.signature{
+
+font-family:'Great Vibes';
+font-size:3rem;
+color:var(--deep);
+margin-top:40px;
+
+}
+
+/* sparkle */
+
+.sparkle{
+
+position:fixed;
+pointer-events:none;
+font-size:14px;
+animation:sparkleFade 2s linear forwards;
+
+}
+
+@keyframes sparkleFade{
+
+0%{opacity:1}
+100%{opacity:0;transform:scale(1.5)}
+
+}
+
+/* mobile */
+
+@media(max-width:768px){
+
+.main-title{font-size:4rem}
+
+.card-container{margin:20px;padding:30px}
 
 }
 
@@ -167,176 +321,160 @@ padding:20px;
 
 <body>
 
-<div class="floating-container"></div>
+<div id="cursor-dot"></div>
 
-<h1 id="title">🎉 Happy Birthday Aditi 🎉</h1>
+<div class="stars-container" id="stars"></div>
+<div class="float-wrap" id="floatWrap"></div>
 
-<div id="countdown"></div>
+<section class="hero">
 
-<div id="centerArea">
+<div class="bday-text">Our Dearest</div>
 
-<div id="giftBox" onclick="openGift()">
-🎁
+<h1 class="main-title">Aditi</h1>
+
+<div class="cake-container">
+<div class="candle"><div class="flame"></div></div>
+<div class="cake"></div>
 </div>
 
-<div class="balloon">🎈 🎈 🎈 🧸</div>
+<div id="countdown">Preparing Surprise...</div>
 
-<div id="cake">🎂</div>
+<button class="reveal-btn" onclick="unfoldSurprise()">OPEN YOUR GIFT 🎁</button>
+
+</section>
+
+<div class="card-container" id="letterCard">
+
+<div class="letter-content" id="typingText"></div>
+
+<div class="signature">With endless love</div>
+<div style="font-weight:bold;font-size:1.4rem">Avinash & Sanskriti ❤️</div>
 
 </div>
 
-<div id="message">
-
-<p id="typing"></p>
-
-</div>
-
-<footer>
-
-Love from,<br>
-<b>Avinash & Sanskriti ❤️</b>
-
-</footer>
-
-<audio id="music" loop>
+<audio id="bgMusic" loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9c1d0a5e6f.mp3?filename=happy-birthday-to-you-piano-version-13976.mp3">
 </audio>
 
 <script>
 
-/* SPARKLES */
+/* stars */
 
-function createSparkle(){
+for(let i=0;i<150;i++){
 
-const sparkle=document.createElement("div")
+let s=document.createElement("div")
+s.className="star"
 
-sparkle.innerHTML="✨"
+let size=Math.random()*3+"px"
 
-sparkle.style.position="fixed"
-sparkle.style.left=Math.random()*100+"vw"
-sparkle.style.top=Math.random()*100+"vh"
-sparkle.style.fontSize=(10+Math.random()*20)+"px"
-sparkle.style.opacity=Math.random()
+s.style.width=size
+s.style.height=size
+s.style.top=Math.random()*100+"%"
+s.style.left=Math.random()*100+"%"
+s.style.setProperty("--duration",Math.random()*3+2+"s")
 
-document.body.appendChild(sparkle)
-
-setTimeout(()=>{sparkle.remove()},2000)
-
-}
-
-setInterval(createSparkle,300)
-
-/* FLOATING ICONS */
-
-const icons=["❤️","💖","💝","🧸","💕","💗"]
-
-function createFloating(){
-
-const element=document.createElement("div")
-element.className="floating"
-
-element.innerHTML=icons[Math.floor(Math.random()*icons.length)]
-
-element.style.left=Math.random()*100+"vw"
-element.style.animationDuration=6+Math.random()*6+"s"
-element.style.fontSize=20+Math.random()*30+"px"
-
-document.querySelector(".floating-container").appendChild(element)
-
-setTimeout(()=>{element.remove()},12000)
+document.getElementById("stars").appendChild(s)
 
 }
 
-setInterval(createFloating,500)
+/* cursor */
 
-/* GIFT OPEN */
+const dot=document.getElementById("cursor-dot")
 
-function openGift(){
-
-document.getElementById("giftBox").innerHTML="🎉"
-
-document.getElementById("message").style.display="block"
-
-document.getElementById("music").play()
-
-/* CONFETTI */
-
-confetti({
-particleCount:300,
-spread:180,
-origin:{y:0.6}
+window.addEventListener("mousemove",e=>{
+dot.style.left=e.clientX+"px"
+dot.style.top=e.clientY+"px"
 })
 
-fireworks()
+/* floating items */
 
-startTyping()
+const items=["🧸","🎈","❤️","💖","🎂","🌸","⭐"]
 
-}
+function spawn(){
 
-/* FIREWORKS */
+let el=document.createElement("div")
+el.className="item"
 
-function fireworks(){
+el.innerHTML=items[Math.floor(Math.random()*items.length)]
 
-var duration=3000
-var end=Date.now()+duration
+el.style.left=Math.random()*100+"vw"
+el.style.setProperty("--d",Math.random()*5+10+"s")
 
-(function frame(){
+document.getElementById("floatWrap").appendChild(el)
 
-confetti({
-particleCount:5,
-angle:60,
-spread:70,
-origin:{x:0}
-})
-
-confetti({
-particleCount:5,
-angle:120,
-spread:70,
-origin:{x:1}
-})
-
-if(Date.now()<end){
-requestAnimationFrame(frame)
-}
-
-})()
+setTimeout(()=>el.remove(),15000)
 
 }
 
-/* TYPING MESSAGE */
+setInterval(spawn,800)
 
-const messageText=`Dear Aditi,
+/* sparkle */
 
-Wishing you a very Happy Birthday! 🎉
+function sparkle(){
 
-May your life always be filled with happiness, laughter,
-and beautiful moments that make every day special.
+let s=document.createElement("div")
 
-May this year bring you amazing opportunities,
-great achievements and endless success.
+s.className="sparkle"
+s.innerHTML="✨"
 
-Keep shining and spreading positivity everywhere.
+s.style.left=Math.random()*100+"vw"
+s.style.top=Math.random()*100+"vh"
 
-May your future be filled with love, success,
-good health and countless joyful memories.
+document.body.appendChild(s)
 
-Once again, Happy Birthday and have a fantastic year ahead! 🎂✨`
+setTimeout(()=>s.remove(),2000)
 
-function startTyping(){
+}
+
+setInterval(sparkle,400)
+
+/* countdown */
+
+const bday=new Date("March 24, 2026 00:00:00").getTime()
+
+setInterval(()=>{
+
+let now=new Date().getTime()
+let d=bday-now
+
+let days=Math.floor(d/(1000*60*60*24))
+let hours=Math.floor((d%(1000*60*60*24))/(1000*60*60))
+let mins=Math.floor((d%(1000*60*60))/(1000*60))
+let secs=Math.floor((d%(1000*60))/1000)
+
+document.getElementById("countdown").innerHTML=
+d>0?`Preparing Surprise: ${days}d ${hours}h ${mins}m ${secs}s`:"The Queen's Day Has Arrived!"
+
+},1000)
+
+/* typing text */
+
+const message=`Happy Birthday Aditi!
+
+Today isn't just a date on the calendar — it is a celebration of the wonderful soul you are.
+
+Your presence spreads warmth and happiness everywhere.
+
+May your life be filled with joy, success, beautiful memories and endless smiles.
+
+Keep shining like the star you are.
+
+The world is brighter with you in it.`
+
+function typeMessage(){
 
 let i=0
-const speed=40
+const el=document.getElementById("typingText")
 
 function type(){
 
-if(i<messageText.length){
+if(i<message.length){
 
-document.getElementById("typing").innerHTML+=messageText.charAt(i)
+el.innerHTML+=message.charAt(i)
 
 i++
 
-setTimeout(type,speed)
+setTimeout(type,40)
 
 }
 
@@ -346,33 +484,30 @@ type()
 
 }
 
-/* COUNTDOWN */
+/* reveal */
 
-var birthday=new Date("March 24, 2026 00:00:00").getTime()
+function unfoldSurprise(){
 
-var x=setInterval(function(){
+document.getElementById("letterCard").style.display="block"
 
-var now=new Date().getTime()
+document.getElementById("bgMusic").play()
 
-var distance=birthday-now
+confetti({
+particleCount:300,
+spread:180,
+origin:{y:0.4},
+colors:["#d4af37","#ff4081","#ffffff"]
+})
 
-var days=Math.floor(distance/(1000*60*60*24))
-var hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60))
-var minutes=Math.floor((distance%(1000*60*60))/(1000*60))
-var seconds=Math.floor((distance%(1000*60))/1000)
+typeMessage()
 
-document.getElementById("countdown").innerHTML=
-"⏳ Surprise unlocks in: "+days+"d "+hours+"h "+minutes+"m "+seconds+"s"
+setTimeout(()=>{
 
-if(distance<0){
+document.getElementById("letterCard").scrollIntoView({behavior:"smooth"})
 
-clearInterval(x)
-
-document.getElementById("countdown").innerHTML="🎉 It's Aditi's Birthday Today! 🎉"
+},500)
 
 }
-
-},1000)
 
 </script>
 
