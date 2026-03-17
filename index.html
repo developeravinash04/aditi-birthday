@@ -95,10 +95,13 @@ animation:floatUp var(--d) linear infinite;
 /* hero */
 
 .hero{
-height:100vh;
+min-height:100vh;
+padding-top:40px;
+padding-bottom:40px;
+
 display:flex;
 flex-direction:column;
-justify-content:center;
+justify-content:flex-start;
 align-items:center;
 text-align:center;
 }
@@ -126,8 +129,9 @@ margin-bottom:30px;
 /* CAKE */
 
 .cake-container{
-margin-top:60px;
+margin-top:30px;
 margin-bottom:10px;
+
 display:flex;
 justify-content:center;
 }
@@ -136,12 +140,13 @@ justify-content:center;
 }
 
 .cake-img{
-width:200px;
-max-width:80%;
+width:220px;
+max-width:70%;
+height:auto;
 
 animation:cakeBounce 2s infinite;
 
-filter:drop-shadow(0 0 25px rgba(255,150,200,0.8));
+filter:drop-shadow(0 0 25px rgba(255,150,200,0.9));
 }
 
 @keyframes cakeBounce{
