@@ -96,7 +96,7 @@ animation:floatUp var(--d) linear infinite;
 
 .hero{
 min-height:100vh;
-padding-top:40px;
+padding:40px 20px;
 padding-bottom:40px;
 
 display:flex;
@@ -110,7 +110,12 @@ text-align:center;
 
 .main-title{
 font-family:'Great Vibes',cursive;
+
 font-size:8rem;
+max-width:100%;
+
+white-space:nowrap;   /* keeps name in one line */
+overflow:visible;     /* prevents cutting */
 
 background:linear-gradient(to right,#fdf5e6,#d4af37,#fdf5e6);
 -webkit-background-clip:text;
@@ -322,8 +327,6 @@ animation:sparkleFade 2s linear forwards;
 @media(max-width:768px){
 
 .main-title{
-font-size:4rem;
-}
 
 .card-container{
 margin:20px;
