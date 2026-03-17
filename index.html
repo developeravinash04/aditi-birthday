@@ -272,21 +272,30 @@ text-align:center;
 /* signature */
 
 .signature{
-font-family:'Great Vibes';
-font-size:3rem;
-color:var(--deep);
-margin-top:40px;
+font-family:'Great Vibes', cursive;
+font-size:2.2rem;
+
+color:#ff5c8a;
+
+margin-top:30px;
+
+text-shadow:0 0 10px rgba(255,92,138,0.4);
 }
 
 .name-signature{
-font-family:'Great Vibes';
-font-size:2.8rem;
-color:#ff4081;
+font-family:'Great Vibes', cursive;
+
+font-size:2.2rem;
+
 margin-top:10px;
-background:linear-gradient(45deg,#ff4081,#ff9ab3,#ff4081);
+
+background:linear-gradient(45deg,#ff4d6d,#ff8fab,#ff4d6d);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+
 animation:glowName 3s infinite alternate;
+
+letter-spacing:1px;
 }
 
 @keyframes glowName{
@@ -311,10 +320,26 @@ animation:sparkleFade 2s linear forwards;
 /* mobile */
 
 @media(max-width:768px){
-.main-title{font-size:4rem}
-.card-container{margin:20px;padding:30px}
+
+.main-title{
+font-size:4rem;
 }
 
+.card-container{
+margin:20px;
+padding:30px;
+}
+
+.signature{
+font-size:1.8rem;
+}
+
+.name-signature{
+font-size:1.8rem;
+}
+
+}
+  
 </style>
 
 </head>
